@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#menu-container, #game-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    max-width: 1920px;
+    max-height: 1080px;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #87CEEB, #E0F6FF); /* Blue sky */
+}
+
+#menu, #settings-menu, #pause-menu, #game-over, #countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#title {
+    font-size: 3em;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+#title::before, #title::after {
+    content: '🪽'; /* Fairy wings emoji */
+    font-size: 0.5em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: flap 2s infinite ease-in-out;
+}
+
+#title::before {
+    left: -40px;
+}
+
+#title::after {
+    right: -40px;
+}
+
+@keyframes flap {
+    0%, 100% { transform: translateY(-50%) rotate(0deg); }
+    50% { transform: translateY(-50%) rotate(10deg); }
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#new-game {
+    background: green;
+    color: white;
+}
+
+#settings, #pause-settings {
+    background: blue;
+    color: white;
+}
+
+#quit {
+    background: red;
+    color: white;
+}
+
+#resume, #restart, #back-to-main-menu, #reset, #back-to-menu {
+    background: #4CAF50;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input[type="range"], select, input[type="color"], input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    #menu-container, #game-container {
+        aspect-ratio: auto;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    #title {
+        font-size: 2em;
+    }
+
+    button {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+}
